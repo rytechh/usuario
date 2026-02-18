@@ -1,0 +1,25 @@
+package com.rytech.usuario.controller;
+
+import com.rytech.usuario.business.UsuarioService;
+import com.rytech.usuario.business.dto.UsuarioDTO;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/Usuario")
+public class UsuarioController {
+
+    private final UsuarioService usuarioService;
+
+    @PostMapping
+    public ResponseEntity<UsuarioDTO> salvarUsuario(@RequestBody UsuarioDTO usuarioDTO){
+        return ResponseEntity.ok(usuarioService.salvaUsuario(usuarioDTO));
+    }
+
+
+}
