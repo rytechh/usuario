@@ -34,8 +34,7 @@ public class UsuarioService {
         usuarioDTO.setSenha(passwordEncoder.encode(usuarioDTO.getSenha()));
         Usuario usuario = usuarioConverter.paraUsuario(usuarioDTO);
         return usuarioConverter.paraUsuarioDTO(
-                usuarioRepository.save(usuario)
-        );
+                usuarioRepository.save(usuario));
     }
 
     public void emailExiste(String email) {
@@ -53,7 +52,7 @@ public class UsuarioService {
         return usuarioRepository.existsByEmail(email);
     }
 
-    // Acho que aqui ela vai fazer uma dupla conversão para recebermos em DTO, e try catch
+
     public UsuarioDTO buscarUsuarioPorEmail(String email) {
         try {
             return usuarioConverter.paraUsuarioDTO(
@@ -101,17 +100,17 @@ public class UsuarioService {
 
     public TelefoneDTO atualizaTelefone(Long idTelefone, TelefoneDTO dto) {
 
-        Telefone telefoneEntity = telefoneRepository.findById(idTelefone).orElseThrow(
+        Telefone entity = telefoneRepository.findById(idTelefone).orElseThrow(
                 () -> new ResourceNotFoundException("Id não encontrado  " + idTelefone));
 
-        Telefone telefone = usuarioConverter.updateTelefone(dto, telefoneEntity);
+        Telefone telefone = usuarioConverter.updateTelefone(dto, entity);
 
         return usuarioConverter.paraTelefoneDTO(telefoneRepository.save(telefone));
     }
 
     public EnderecoDTO cadastraEndereco(String token, EnderecoDTO dto) {
 
-        String email =  jwtUtil.extrairEmailToken(token.substring(7));
+        String email = jwtUtil.extrairEmailToken(token.substring(7));
 
         Usuario usuario = usuarioRepository.findByEmail(email).orElseThrow(
                 () -> new ResourceNotFoundException("Email não encontrado " + email));
