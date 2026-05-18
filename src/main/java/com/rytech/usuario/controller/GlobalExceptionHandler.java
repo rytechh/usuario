@@ -1,6 +1,7 @@
 package com.rytech.usuario.controller;
 
 import com.rytech.usuario.infrastructure.exceptions.ConflictException;
+import com.rytech.usuario.infrastructure.exceptions.IllegalArgumentsException;
 import com.rytech.usuario.infrastructure.exceptions.ResourceNotFoundException;
 import com.rytech.usuario.infrastructure.exceptions.UnauthorizedException;
 import org.springframework.http.HttpStatus;
@@ -24,6 +25,11 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(UnauthorizedException.class)
     public ResponseEntity<String> handleUnauthorizedException(UnauthorizedException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.UNAUTHORIZED);
+    }
+
+    @ExceptionHandler(IllegalArgumentsException.class)
+    public ResponseEntity<String> handleIllegalArgumentException(IllegalArgumentsException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
 }

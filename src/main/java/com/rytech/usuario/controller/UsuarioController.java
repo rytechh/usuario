@@ -1,9 +1,11 @@
 package com.rytech.usuario.controller;
 
 import com.rytech.usuario.business.UsuarioService;
+import com.rytech.usuario.business.ViaCepService;
 import com.rytech.usuario.business.dto.EnderecoDTO;
 import com.rytech.usuario.business.dto.TelefoneDTO;
 import com.rytech.usuario.business.dto.UsuarioDTO;
+import com.rytech.usuario.infrastructure.Clients.ViaCepDTO;
 import com.rytech.usuario.infrastructure.security.JwtUtil;
 import com.rytech.usuario.infrastructure.security.SecurityConfig;
 import io.swagger.v3.oas.annotations.Operation;
@@ -27,6 +29,7 @@ public class UsuarioController {
     private final UsuarioService usuarioService;
     private final AuthenticationManager authenticationManager;
     private final JwtUtil jwtUtil;
+    private final ViaCepService  viaCepService;
 
     @PostMapping
     @Operation(summary = "Salva usuários", description = "Cria um novo usuário")
@@ -126,6 +129,11 @@ public class UsuarioController {
     public ResponseEntity<TelefoneDTO> cadastraTelefone(@RequestBody TelefoneDTO telefoneDTO,
                                                         @RequestHeader("Authorization") String token) {
         return ResponseEntity.ok(usuarioService.cadastraTelefone(token, telefoneDTO));
+    }
+
+    @GetMapping("/endereco/{cep}")
+    public ResponseEntity<ViaCepDTO> buscarDadosCep(@PathVariable ("cep") String cep) {
+        return ResponseEntity.ok(viaCepService.buscaDadosEndereco(cep));
     }
 
 }
