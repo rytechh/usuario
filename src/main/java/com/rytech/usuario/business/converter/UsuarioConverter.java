@@ -120,6 +120,7 @@ public class UsuarioConverter {
                 .cep(dto.getCep() != null ? dto.getCep() : entity.getCep())
                 .cidade(dto.getCidade() != null ? dto.getCidade() : entity.getCidade())
                 .estado(dto.getEstado() != null ? dto.getEstado() : entity.getEstado())
+                .usuarioId(entity.getUsuarioId())
                 .build();
 
     }
@@ -129,6 +130,7 @@ public class UsuarioConverter {
                 .id(entity.getId())
                 .ddd(dto.getDdd() != null ? dto.getDdd() : entity.getDdd())
                 .numero(dto.getNumero() != null ? dto.getNumero() : entity.getNumero())
+                .usuarioId(entity.getUsuarioId())
                 .build();
     }
 
@@ -140,7 +142,7 @@ public class UsuarioConverter {
                 .cidade(dto.getCidade())
                 .estado(dto.getEstado())
                 .cep(dto.getCep())
-                .usuario_id(idUsuario)
+                .usuarioId(idUsuario)
                 .build();
     }
 
@@ -148,7 +150,7 @@ public class UsuarioConverter {
         return Telefone.builder()
                 .ddd(dto.getDdd())
                 .numero(dto.getNumero())
-                .usuario_id(idUsuario)
+                .usuarioId(idUsuario)
                 .build();
     }
 }
