@@ -92,7 +92,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         try {
             return objectMapper.writeValueAsString(errorResponseDTO);
         } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
+            throw new IllegalStateException("Falha crítica ao serializar o DTO de erro para JSON ", e);
         }
 
     }
