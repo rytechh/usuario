@@ -37,6 +37,9 @@ public class UsuarioService {
     private final AuthenticationManager authenticationManager;
 
 
+    private static final String MSG_EMAIL_NAO_ENCONTRADO = "Email não encontrado: ";
+
+
     public UsuarioDTO salvaUsuario(UsuarioDTO usuarioDTO) {
         emailExiste(usuarioDTO.getEmail());
         usuarioDTO.setSenha(passwordEncoder.encode(usuarioDTO.getSenha()));
@@ -64,7 +67,7 @@ public class UsuarioService {
                 throw new ConflictException("Email já cadastrado" + email);
             }
         } catch (ConflictException e) {
-            throw new ConflictException("Email já cadastrado" + e.getCause());
+            throw new ConflictException("Email já cadastrado", e.getCause());
         }
     }
 
@@ -78,11 +81,11 @@ public class UsuarioService {
             return usuarioConverter.paraUsuarioDTO(
                     usuarioRepository.findByEmail(email)
                             .orElseThrow(
-                                    () -> new ResourceNotFoundException("Email não encontrado" + email))
+                                    () -> new ResourceNotFoundException(MSG_EMAIL_NAO_ENCONTRADO + email))
             );
         } catch (ResourceNotFoundException e) {
 
-            throw new ResourceNotFoundException("Email não encontrado " + email);
+            throw new ResourceNotFoundException(MSG_EMAIL_NAO_ENCONTRADO + email);
         }
 
     }
