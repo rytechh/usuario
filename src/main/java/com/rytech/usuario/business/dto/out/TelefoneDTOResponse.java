@@ -1,4 +1,4 @@
-package com.rytech.usuario.business.dto;
+package com.rytech.usuario.business.dto.out;
 
 import lombok.*;
 
@@ -7,7 +7,8 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class TelefoneDTO {
+@EqualsAndHashCode(exclude = "id")
+public class TelefoneDTOResponse {
 
     private Long id;
     private String numero;
