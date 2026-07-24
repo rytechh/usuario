@@ -13,6 +13,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "endereco")
 @Builder
+@EqualsAndHashCode(exclude = "id")
 public class Endereco implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;

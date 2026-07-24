@@ -16,6 +16,8 @@ import java.util.List;
 @Entity
 @Table(name = "usuario")
 @Builder
+@EqualsAndHashCode(exclude = "id")
+@Data
 public class Usuario implements UserDetails {
 
     @Id
