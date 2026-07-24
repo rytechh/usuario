@@ -1,7 +1,7 @@
 package com.rytech.usuario.business;
 
-import com.rytech.usuario.infrastructure.Clients.ViaCepClient;
-import com.rytech.usuario.infrastructure.Clients.ViaCepDTO;
+import com.rytech.usuario.infrastructure.clients.ViaCepClient;
+import com.rytech.usuario.infrastructure.clients.ViaCepDTO;
 import com.rytech.usuario.infrastructure.exceptions.IllegalArgumentsException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
