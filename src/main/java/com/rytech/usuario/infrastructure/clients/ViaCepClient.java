@@ -1,4 +1,4 @@
-package com.rytech.usuario.infrastructure.Clients;
+package com.rytech.usuario.infrastructure.clients;
 
 
 import org.springframework.cloud.openfeign.FeignClient;

@@ -8,7 +8,7 @@ import com.rytech.usuario.business.dto.in.UsuarioDTORequest;
 import com.rytech.usuario.business.dto.out.EnderecoDTOResponse;
 import com.rytech.usuario.business.dto.out.TelefoneDTOResponse;
 import com.rytech.usuario.business.dto.out.UsuarioDTOResponse;
-import com.rytech.usuario.infrastructure.Clients.ViaCepDTO;
+import com.rytech.usuario.infrastructure.clients.ViaCepDTO;
 import com.rytech.usuario.infrastructure.security.JwtUtil;
 import com.rytech.usuario.infrastructure.security.SecurityConfig;
 import io.swagger.v3.oas.annotations.Operation;
@@ -78,7 +78,7 @@ public class UsuarioController {
     @ApiResponse(responseCode = "401", description = "Credenciais inválidas")
     @ApiResponse(responseCode = "403", description = "Usuário não cadastrado")
     @ApiResponse(responseCode = "500", description = "Erro do servidor")
-    public ResponseEntity<UsuarioDTOResponse> atualizaDadoUsuario(@RequestBody UsuarioDTORequest usuarioDTO,
+    public ResponseEntity<UsuarioDTOResponse> atualizaDadosUsuario(@RequestBody UsuarioDTORequest usuarioDTO,
                                                                   @RequestHeader("Authorization") String token) {
         return ResponseEntity.ok(usuarioService.atualizaDadosUsuario(token, usuarioDTO));
     }
