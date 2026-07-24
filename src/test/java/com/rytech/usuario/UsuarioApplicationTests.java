@@ -1,0 +1,12 @@
+package com.rytech.usuario;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+public class UsuarioApplicationTests {
+
+    @Test
+    void contextLoads() {
+    }
+}
