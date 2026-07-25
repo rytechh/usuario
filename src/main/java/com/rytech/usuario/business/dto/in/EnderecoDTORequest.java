@@ -1,4 +1,4 @@
-package com.rytech.usuario.business.dto;
+package com.rytech.usuario.business.dto.in;
 
 import lombok.*;
 
@@ -7,9 +7,8 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class EnderecoDTO {
+public class EnderecoDTORequest {
 
-    private Long id;
     private String rua;
     private String numero;
     private String complemento;
